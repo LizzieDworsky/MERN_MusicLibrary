@@ -20,7 +20,15 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        res.status(201).send("Post Request.");
+        let { error } = validateSong(req.body);
+        if (error) {
+            return res.status(400).send("Invalid body for post request.");
+        }
+
+        let newSong = new Song(req.body);
+        await newSong.save();
+
+        res.status(201).send(newSong);
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
     }
@@ -36,7 +44,7 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
     try {
-        res.status(204).send("Delete Request.");
+        res.status(204).send("");
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
     }
