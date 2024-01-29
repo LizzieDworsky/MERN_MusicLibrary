@@ -4,7 +4,8 @@ const { Song, validateSong } = require("../models/Song");
 
 router.get("/", async (req, res) => {
     try {
-        res.status(200).send("Get all Request.");
+        let songs = await Song.find();
+        res.status(200).send(songs);
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
     }
