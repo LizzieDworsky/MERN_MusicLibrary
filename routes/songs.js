@@ -61,6 +61,7 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
     try {
+        await Song.findByIdAndDelete(req.params.id);
         res.status(204).send("");
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
