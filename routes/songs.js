@@ -13,7 +13,14 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     try {
-        res.status(200).send("Get by ID Request.");
+        let songId = req.params.id;
+
+        let song = await Song.findById(songId);
+        if (!song) {
+            res.status(404).send(`No song found at ID ${songId}.`);
+        }
+
+        res.status(200).send(song);
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
     }
