@@ -44,7 +44,16 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
     try {
-        res.status(200).send("Put Request.");
+        let { error } = validateSong(req.body);
+        if (error) {
+            return res.status(400).send("Invalid body for put request.");
+        }
+
+        let song = await Song.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+        });
+
+        res.status(200).send(song);
     } catch (error) {
         res.status(500).send(`Internal Server Error ${error}`);
     }
