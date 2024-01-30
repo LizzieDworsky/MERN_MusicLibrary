@@ -1,13 +1,12 @@
 import MusicTable from "./components/MusicTable";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import NewSongForm from "./components/NewSongForm";
-import SearchBar from "./components/SearchBar";
+import "./App.css";
 
 function App() {
     return (
         <div className="App">
             <NavBar />
-            <SearchBar />
             <NewSongForm />
             <MusicTable />
         </div>
