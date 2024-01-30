@@ -5,16 +5,25 @@ const MusicTable = ({ songs, getAllSongs }) => {
     return (
         <div>
             <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Artist</th>
-                    <th>Album</th>
-                    <th>Genre</th>
-                    <th>Release Date</th>
-                </tr>
-                {songs.map((song) => (
-                    <Song key={song.id} song={song} />
-                ))}
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Album</th>
+                        <th>Genre</th>
+                        <th>Release Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {songs.map((song) => (
+                        <Song
+                            key={song._id}
+                            song={song}
+                            getAllSongs={getAllSongs}
+                        />
+                    ))}
+                </tbody>
             </table>
             <button onClick={(e) => getAllSongs(e)} className="reset-song-btn">
                 Reset Songs

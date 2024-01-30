@@ -24,7 +24,8 @@ tr:hover {
     background-color: #f2f2f2;
 }
 
-.reset-song-btn {
+.reset-song-btn,
+.delete-btn {
     display: block;
     margin: 0 auto;
     padding: 0.4rem 0.8rem;
@@ -37,7 +38,8 @@ tr:hover {
     transition: all 300ms ease-in-out;
 }
 
-.reset-song-btn:hover {
+.reset-song-btn:hover,
+.delete-btn:hover {
     background: white;
     color: black;
     border-color: #b3c2c7;
