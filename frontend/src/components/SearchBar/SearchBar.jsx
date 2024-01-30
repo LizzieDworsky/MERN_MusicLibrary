@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./SearchBar.css";
 
-const SearchBar = ({}) => {
+const SearchBar = ({ filterSongs }) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(searchTerm);
+        filterSongs(searchTerm);
         setSearchTerm("");
     };
 

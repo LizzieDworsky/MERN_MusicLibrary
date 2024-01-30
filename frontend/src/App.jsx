@@ -17,15 +17,27 @@ function App() {
         }
     };
 
+    const filterSongs = (searchTerm) => {
+        searchTerm = searchTerm.toLowerCase();
+        let filteredSongs = songs.filter(
+            (song) =>
+                song.title.toLowerCase().includes(searchTerm) ||
+                song.artist.toLowerCase().includes(searchTerm) ||
+                song.album.toLowerCase().includes(searchTerm) ||
+                song.genre.toLowerCase().includes(searchTerm)
+        );
+        setSongs(filteredSongs);
+    };
+
     useEffect(() => {
         getAllSongs();
     }, []);
 
     return (
         <div className="App">
-            <NavBar />
+            <NavBar filterSongs={filterSongs} />
             <NewSongForm getAllSongs={getAllSongs} />
-            <MusicTable songs={songs} />
+            <MusicTable songs={songs} getAllSongs={getAllSongs} />
         </div>
     );
 }
