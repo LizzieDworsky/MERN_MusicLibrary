@@ -1,4 +1,5 @@
 import Song from "./Song";
+import "./MusicTableSong.css";
 
 const MusicTable = ({ songs }) => {
     return (
