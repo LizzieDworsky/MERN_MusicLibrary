@@ -1,11 +1,19 @@
 import Song from "./Song";
 
-const MusicTable = ({}) => {
+const MusicTable = ({ songs }) => {
     return (
-        <div>
-            Music Table
-            <Song />
-        </div>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+            </tr>
+            {songs.map((song) => (
+                <Song key={song.id} song={song} />
+            ))}
+        </table>
     );
 };
 

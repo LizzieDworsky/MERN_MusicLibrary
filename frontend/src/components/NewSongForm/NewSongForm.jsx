@@ -28,14 +28,12 @@ const NewSongForm = ({ getAllSongs }) => {
 
     const addNewSong = async (newSong) => {
         try {
-            console.log(newSong);
             const response = await axios.post(
                 "http://localhost:5000/api/songs",
                 newSong
             );
             if (response.status === 201) {
-                // add get all songs call
-                console.log(response);
+                getAllSongs();
             }
         } catch (error) {
             console.warn(`Error submitting new song form: ${error}`);
