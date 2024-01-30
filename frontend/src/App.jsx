@@ -1,6 +1,6 @@
 import MusicTable from "./components/MusicTable";
 import NavBar from "./components/NavBar/NavBar";
-import NewSongForm from "./components/NewSongForm";
+import NewSongForm from "./components/NewSongForm/NewSongForm";
 import "./App.css";
 
 function App() {
