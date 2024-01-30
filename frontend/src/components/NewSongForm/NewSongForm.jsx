@@ -1,15 +1,49 @@
 import { useState } from "react";
+import axios from "axios";
 import "./NewSongForm.css";
 
-const NewSongForm = ({}) => {
+const NewSongForm = ({ getAllSongs }) => {
     const [title, setTitle] = useState("");
     const [artist, setArtist] = useState("");
     const [album, setAlbum] = useState("");
     const [genre, setGenre] = useState("");
     const [releaseDate, setReleaseDate] = useState("");
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let newSong = {
+            title,
+            artist,
+            album,
+            genre,
+            releaseDate,
+        };
+        addNewSong(newSong);
+        setTitle("");
+        setArtist("");
+        setAlbum("");
+        setGenre("");
+        setReleaseDate("");
+    };
+
+    const addNewSong = async (newSong) => {
+        try {
+            console.log(newSong);
+            const response = await axios.post(
+                "http://localhost:5000/api/songs",
+                newSong
+            );
+            if (response.status === 201) {
+                // add get all songs call
+                console.log(response);
+            }
+        } catch (error) {
+            console.warn(`Error submitting new song form: ${error}`);
+        }
+    };
+
     return (
-        <form className="new-song-form">
+        <form onSubmit={(e) => handleSubmit(e)} className="new-song-form">
             <label className="form-label">Title</label>
             <input
                 className="form-input"
