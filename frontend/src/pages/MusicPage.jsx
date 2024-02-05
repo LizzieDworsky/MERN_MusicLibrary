@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import MusicTable from "../components/MusicTableSong/MusicTable";
 import NavBarSearch from "../components/NavBar/NavBarSearch";
@@ -31,11 +31,18 @@ const MusicPage = () => {
         setSongs(filteredSongs);
     };
 
+    const fetchSongs = async () => {
+        let allSongs = await getAllSongs();
+        if (allSongs) {
+            setSongs(allSongs);
+        }
+    };
+
     return (
         <div className="App">
             <NavBarSearch filterSongs={filterSongs} />
-            <NewSongForm getAllSongs={getAllSongs} />
-            <MusicTable songs={songs} getAllSongs={getAllSongs} />
+            <NewSongForm getAllSongs={fetchSongs} />
+            <MusicTable songs={songs} getAllSongs={fetchSongs} />
         </div>
     );
 };
