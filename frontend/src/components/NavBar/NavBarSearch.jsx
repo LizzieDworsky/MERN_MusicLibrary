@@ -1,7 +1,7 @@
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 
-const NavBar = ({ filterSongs }) => {
+const NavBarSearch = ({ filterSongs }) => {
     return (
         <nav className="nav-bar">
             <h1 className="nav-title">Rhythm Rift</h1>
@@ -10,4 +10,4 @@ const NavBar = ({ filterSongs }) => {
     );
 };
 
-export default NavBar;
+export default NavBarSearch;
