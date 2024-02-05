@@ -24,7 +24,8 @@ function App() {
                 song.title.toLowerCase().includes(searchTerm) ||
                 song.artist.toLowerCase().includes(searchTerm) ||
                 song.album.toLowerCase().includes(searchTerm) ||
-                song.genre.toLowerCase().includes(searchTerm)
+                song.genre.toLowerCase().includes(searchTerm) ||
+                song.releaseDate.toLowerCase().includes(searchTerm)
         );
         setSongs(filteredSongs);
     };
