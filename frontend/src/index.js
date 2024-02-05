@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import MusicPage, { getAllSongs } from "./pages/MusicPage";
-import SongDetailsPage from "./pages/SongDetailsPage";
+import SongDetailsPage, { getSong } from "./pages/SongDetailsPage";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +18,7 @@ const router = createBrowserRouter([
             {
                 path: "song/details/:songId",
                 element: <SongDetailsPage />,
+                loader: getSong,
             },
         ],
     },

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Song = ({ song, getAllSongs }) => {
+const TableSong = ({ song, getAllSongs }) => {
     const date = new Date(song.releaseDate);
     const readableDate = date.toLocaleDateString("en-US", {
         year: "numeric",
@@ -43,4 +43,4 @@ const Song = ({ song, getAllSongs }) => {
     );
 };
 
-export default Song;
+export default TableSong;

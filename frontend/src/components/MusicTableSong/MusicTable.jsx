@@ -1,4 +1,4 @@
-import Song from "./Song";
+import TableSong from "./TableSong";
 import "./MusicTableSong.css";
 
 const MusicTable = ({ songs, getAllSongs }) => {
@@ -17,7 +17,7 @@ const MusicTable = ({ songs, getAllSongs }) => {
                 </thead>
                 <tbody>
                     {songs.map((song) => (
-                        <Song
+                        <TableSong
                             key={song._id}
                             song={song}
                             getAllSongs={getAllSongs}
