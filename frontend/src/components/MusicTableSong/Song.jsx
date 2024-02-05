@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Song = ({ song, getAllSongs }) => {
     const date = new Date(song.releaseDate);
@@ -23,7 +24,9 @@ const Song = ({ song, getAllSongs }) => {
 
     return (
         <tr>
-            <td>{song.title}</td>
+            <td>
+                <Link to={`song/details/${song._id}`}>{song.title}</Link>
+            </td>
             <td>{song.artist}</td>
             <td>{song.album}</td>
             <td>{song.genre}</td>
