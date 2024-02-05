@@ -3,18 +3,20 @@ import axios from "axios";
 import MusicTable from "../components/MusicTableSong/MusicTable";
 import NavBarSearch from "../components/NavBar/NavBarSearch";
 import NewSongForm from "../components/NewSongForm/NewSongForm";
+import { useLoaderData } from "react-router-dom";
 
-const MusicPage = ({}) => {
-    const [songs, setSongs] = useState([]);
+export const getAllSongs = async () => {
+    try {
+        const response = await axios.get("http://localhost:5000/api/songs");
+        return response.data;
+    } catch (error) {
+        console.warn(`Error in getAllSongs request:${error}`);
+    }
+};
 
-    const getAllSongs = async () => {
-        try {
-            const response = await axios.get("http://localhost:5000/api/songs");
-            setSongs(response.data);
-        } catch (error) {
-            console.warn(`Error in getAllSongs request:${error}`);
-        }
-    };
+const MusicPage = () => {
+    const data = useLoaderData();
+    const [songs, setSongs] = useState(data);
 
     const filterSongs = (searchTerm) => {
         searchTerm = searchTerm.toLowerCase();
@@ -28,10 +30,6 @@ const MusicPage = ({}) => {
         );
         setSongs(filteredSongs);
     };
-
-    useEffect(() => {
-        getAllSongs();
-    }, []);
 
     return (
         <div className="App">
